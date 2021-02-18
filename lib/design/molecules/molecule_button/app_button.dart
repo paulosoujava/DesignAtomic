@@ -1,5 +1,3 @@
-import 'package:atomic_design/design_atomic/atoms/app/atom_icon/atom_icon.dart';
-import 'package:atomic_design/design_atomic/atoms/app/atom_text/atom_text.dart';
 import 'package:flutter/material.dart';
 
 class AppButton extends OutlineButton {
@@ -9,8 +7,8 @@ class AppButton extends OutlineButton {
   final double circular;
   final double size;
 
-  final AtomIcon icon;
-  final AtomText text;
+  final Widget icon;
+  final Widget text;
 
   AppButton(this.onPressed, this.splashColor, this.colorBorderSide, this.circular, this.icon, this.text, this.size);
 

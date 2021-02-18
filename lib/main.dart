@@ -1,6 +1,9 @@
-import 'package:atomic_design/design_atomic/atoms/builders/builder_text.dart';
-import 'package:atomic_design/design_atomic/molecules/builders/molecule_button.dart';
+import 'package:atomic_design/design/atoms/builders/builder_input.dart';
+import 'package:atomic_design/design/atoms/builders/builder_text.dart';
+import 'package:atomic_design/design/molecules/builders/builder_button.dart';
 import 'package:flutter/material.dart';
+
+import 'design/atoms/app/atom_input/atom_input.dart';
 
 void main() {
   runApp(MyApp());
@@ -48,10 +51,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ...BuilderInput.instance().whenRegular(hintText: "hint", helperText: "help", labelText: "label").build(),
             ...BuilderText.instance().h1('You have pushed the button this many times:', context: context).build(),
             ...BuilderText.instance().h2('$_counter', context: context).build(),
-            ...BuilderButton.instance().whenRegular(context, data: "Add", onPress: _incrementCounter).build(),
-            ...BuilderButton.instance().whenError(context, data: "More", onPress: _incrementCounter).whenRegular(context, data: "Add", onPress: _incrementCounter).build(),
+            ...BuilderButton.instance().whenRegular(data: "Add", onPress: _incrementCounter).build(),
+            ...BuilderButton.instance().whenError(data: "More", onPress: _incrementCounter).whenRegular(data: "Add", onPress: _incrementCounter).build(),
           ],
         ),
       ),
