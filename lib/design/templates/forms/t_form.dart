@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class TLogin {
+class TForm {
   ///!Image(image: AssetImage('assets/images/logo.png'))
 
   static Widget build({
     BuildContext context,
+    double bottomLeft = 50,
+    double bottomRight = 400,
     Widget logo,
     List<Widget> titleHeader,
     List<Widget> containerLogin,
@@ -21,7 +23,7 @@ class TLogin {
                 Theme.of(context).primaryColor,
               ]),
               boxShadow: [BoxShadow(offset: Offset(0, 1), spreadRadius: 0, blurRadius: 4, color: Colors.black)],
-              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(400))),
+              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(bottomLeft), bottomRight: Radius.circular(bottomRight))),
           child: logo,
         ),
         Padding(
@@ -29,7 +31,10 @@ class TLogin {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [...titleHeader, ...containerLogin],
+            children: [
+              ...titleHeader,
+              ...containerLogin,
+            ],
           ),
         ),
       ],

@@ -11,6 +11,12 @@ import 'package:flutter/material.dart';
 class FormComposition with AppStrings implements BaseComponent<Widget> {
   static FormComposition _instance;
 
+  Map<String, String> labelsEmail;
+  Map<String, String> labelsPass;
+  Map<String, String> labelsConf;
+  String labelButton;
+  String labelRegister;
+
   List<Widget> _states = [];
 
   FormComposition._();
@@ -26,12 +32,11 @@ class FormComposition with AppStrings implements BaseComponent<Widget> {
   }
 
   FormComposition buildLogin({Function onPressed}) {
-    Map<String, String> labelsEmail = AppStrings.labesInputLogin();
-    Map<String, String> labelsPass = AppStrings.labesInputPass();
-    String labelButton = AppStrings.buttonLogin();
+    _setStrings();
 
     _states.add(SpaceInputSpace.build(hintText: labelsEmail['hintText'], helperText: labelsEmail['helperText'], labelText: labelsEmail['labelText']));
     _states.add(SpaceInputSpace.build(hintText: labelsPass['hintText'], helperText: labelsPass['helperText'], labelText: labelsPass['labelText']));
+
     _states.add(AppButton.build(
       onPressed: onPressed,
       splashColor: Colors.blue,
@@ -43,6 +48,31 @@ class FormComposition with AppStrings implements BaseComponent<Widget> {
 
     return this;
   }
-}
 
-class AppIcon {}
+  FormComposition buildRegister({Function onPressed}) {
+    _setStrings();
+
+    _states.add(SpaceInputSpace.build(hintText: labelsEmail['hintText'], helperText: labelsEmail['helperText'], labelText: labelsEmail['labelText']));
+    _states.add(SpaceInputSpace.build(hintText: labelsPass['hintText'], helperText: labelsPass['helperText'], labelText: labelsPass['labelText']));
+    _states.add(SpaceInputSpace.build(hintText: labelsConf['hintText'], helperText: labelsConf['helperText'], labelText: labelsConf['labelText']));
+
+    _states.add(AppButton.build(
+      onPressed: onPressed,
+      splashColor: Colors.blue,
+      colorBorderSide: Colors.blue,
+      circular: 20,
+      text: AtomText.build(labelRegister),
+      icon: AtomIcon.build(icon: Icons.favorite, color: Colors.blue, size: 12),
+    ));
+
+    return this;
+  }
+
+  _setStrings() {
+    labelsEmail = AppStrings.labesInputLogin();
+    labelsPass = AppStrings.labesInputPass();
+    labelsConf = AppStrings.labesInputPassConf();
+    labelButton = AppStrings.buttonLogin();
+    labelRegister = AppStrings.buttonRegister();
+  }
+}
