@@ -1,5 +1,5 @@
 import 'package:atomic_design/design/atoms/app/atom_input/atom_input.dart';
-import 'package:atomic_design/design/mixins/app_size.dart';
+import 'package:atomic_design/design/mixins/sizes/app_size.dart';
 import 'package:flutter/cupertino.dart';
 
 class SpaceInputSpace with AppSize {

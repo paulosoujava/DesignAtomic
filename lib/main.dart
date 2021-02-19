@@ -2,7 +2,7 @@ import 'package:atomic_design/design/atoms/builders/builder_text.dart';
 import 'package:atomic_design/design/molecules/builders/builder_button.dart';
 import 'package:flutter/material.dart';
 
-import 'design/organisms/input/builder_login.dart';
+import 'design/organisms/input/login_composition.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,29 +52,21 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // String atomLabelText, String hintText, String helperText, String inputText
-              ...BuilderLogin.instance().buildLogin([
-                '1',
-                '2',
-                '3',
-                '4',
-                '5',
-                '6',
-              ]).build(),
+              ...FormComposition.instance().buildLogin(onPressed: () {}).build(),
 
-              ...BuilderText.instance().h1('You have pushed the button this many times:', context: context).build(),
-              ...BuilderText.instance().h2('$_counter', context: context).build(),
-              ...BuilderButton.instance().whenRegular(data: "Add", onPress: _incrementCounter).build(),
-              ...BuilderButton.instance().whenError(data: "More", onPress: _incrementCounter).whenRegular(data: "Add", onPress: _incrementCounter).build(),
+              //   ...BuilderText.instance().h1('You have pushed the button this many times:', context: context).build(),
+              //   ...BuilderText.instance().h2('$_counter', context: context).build(),
+              //   ...BuilderButton.instance().whenRegular(data: "Add", onPress: _incrementCounter).build(),
+              //   ...BuilderButton.instance().whenError(data: "More", onPress: _incrementCounter).whenRegular(data: "Add", onPress: _incrementCounter).build(),
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: Icon(Icons.add),
+      // ),
     );
   }
 }
