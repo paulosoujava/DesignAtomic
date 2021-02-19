@@ -1,8 +1,6 @@
-import 'package:atomic_design/design/atoms/builders/builder_text.dart';
-import 'package:atomic_design/design/molecules/builders/builder_button.dart';
-import 'package:flutter/material.dart';
+import 'package:atomic_design/design/pages/login_page.dart';
 
-import 'design/organisms/input/login_composition.dart';
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,12 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Atomic Design',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Atomic Design'),
     );
   }
 }
@@ -44,29 +42,34 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ...FormComposition.instance().buildLogin(onPressed: () {}).build(),
-
-              //   ...BuilderText.instance().h1('You have pushed the button this many times:', context: context).build(),
-              //   ...BuilderText.instance().h2('$_counter', context: context).build(),
-              //   ...BuilderButton.instance().whenRegular(data: "Add", onPress: _incrementCounter).build(),
-              //   ...BuilderButton.instance().whenError(data: "More", onPress: _incrementCounter).whenRegular(data: "Add", onPress: _incrementCounter).build(),
-            ],
-          ),
-        ),
-      ),
+      body: Scaffold(body: SafeArea(child: LoginPage())),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
       //   tooltip: 'Increment',
       //   child: Icon(Icons.add),
       // ),
+    );
+  }
+
+  Center buildCenter() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            // ...FormComposition.instance().buildLogin(onPressed: () {}).build(),
+
+            //   ...BuilderText.instance().h1('You have pushed the button this many times:', context: context).build(),
+            //   ...BuilderText.instance().h2('$_counter', context: context).build(),
+            //   ...BuilderButton.instance().whenRegular(data: "Add", onPress: _incrementCounter).build(),
+            //   ...BuilderButton.instance().whenError(data: "More", onPress: _incrementCounter).whenRegular(data: "Add", onPress: _incrementCounter).build(),
+          ],
+        ),
+      ),
     );
   }
 }

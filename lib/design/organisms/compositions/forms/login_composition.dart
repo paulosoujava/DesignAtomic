@@ -2,9 +2,9 @@ import 'package:atomic_design/core/base/base_component.dart';
 import 'package:atomic_design/design/atoms/app/atom_icon/atom_icon.dart';
 import 'package:atomic_design/design/atoms/app/atom_text/atom_text.dart';
 import 'package:atomic_design/design/mixins/strings/app_strings.dart';
-import 'package:atomic_design/design/molecules/button/app_button.dart';
+import 'package:atomic_design/design/molecules/app/button/app_button.dart';
 
-import 'package:atomic_design/design/molecules/input/app_input.dart';
+import 'package:atomic_design/design/molecules/app/input/app_input.dart';
 
 import 'package:flutter/material.dart';
 
