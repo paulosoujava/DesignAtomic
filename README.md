@@ -116,3 +116,6 @@ dar o estado por assim dizer, exemplo uma molécula de botão pode ter os estado
 Depois o organismo onde ai começamos a montar, juntar a cacalhada toda, após isso o template, onde crio template para o que vou usar, tipo, criei um template para 
 formulários, poderia ter um template para profiles etc... e por final as pages que chamam o template, que chamam os organismos, que chamam as moléculas que chamam os átomos ufaa
 obviametne a ordem dos TRATORES não altera o VIADUTO!!
+
+Ah link para os design pattern em dart:
+https://github.com/paulosoujava/patterns_in_dart
