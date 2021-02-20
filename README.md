@@ -92,6 +92,7 @@ Todas as implementações do Singleton tem esses dois passos em comum:
 Fazer o construtor padrão privado, para prevenir que outros objetos usem o operador new com a classe singleton.
 Criar um método estático de criação que age como um construtor. Esse método chama o construtor privado por debaixo dos panos para criar um objeto e o salva em um campo estático. Todas as chamadas seguintes para esse método retornam o objeto em cache.
 Se o seu código tem acesso à classe singleton, então ele será capaz de chamar o método estático da singleton. Então sempre que aquele método é chamado, o mesmo objeto é retornado.
+
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/singleton.png" width="648">
 
 ## Composite
@@ -113,6 +114,8 @@ Como esse método funcionaria? Para um produto, ele simplesmente retornaria o pr
 O maior benefício dessa abordagem é que você não precisa se preocupar sobre as classes concretas dos objetos que compõem essa árvore. Você não precisa saber se um objeto é um produto simples ou uma caixa sofisticada. Você pode tratar todos eles com a mesma interface. Quando você chama um método os próprios objetos passam o pedido pela árvore.
 
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/composite.png" width="648">
+
+
 FONTE RECOMENDO MUIIIIITO ESTE LIVRO
 https://refactoring.guru/pt-br
 
