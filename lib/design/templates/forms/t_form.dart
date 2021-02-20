@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TForm {
-  ///!Image(image: AssetImage('assets/images/logo.png'))
-
   static Widget build({
     BuildContext context,
     double bottomLeft = 50,

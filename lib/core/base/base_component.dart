@@ -1,1 +1,3 @@
-abstract class BaseComponent<W> {List<W> build();}
+abstract class BaseComponent<W> {
+  List<W> build();
+}
