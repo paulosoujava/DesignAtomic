@@ -1,6 +1,6 @@
-import 'package:atomic_design/core/behaviors/behaviors_component.dart';
-import 'package:atomic_design/design/atoms/app/atom_input/atom_input.dart';
 import 'package:flutter/material.dart';
+
+import '../atoms.dart';
 
 class BuilderInput implements BehaviorsComponent<BuilderInput, Widget> {
   static BuilderInput _instance;

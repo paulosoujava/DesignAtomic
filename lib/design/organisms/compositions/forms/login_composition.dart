@@ -1,10 +1,8 @@
-import 'package:atomic_design/core/base/base_component.dart';
-import 'package:atomic_design/design/atoms/app/atom_icon/atom_icon.dart';
-import 'package:atomic_design/design/atoms/app/atom_text/atom_text.dart';
-import 'package:atomic_design/design/molecules/app/button/app_button.dart';
-import 'package:atomic_design/design/molecules/app/input/app_input.dart';
-
 import 'package:flutter/material.dart';
+
+import 'package:atomic_design/core/cores.dart';
+import 'package:atomic_design/design/atoms/atoms.dart';
+import 'package:atomic_design/design/molecules/molecules.dart';
 
 class FormComposition implements BaseComponent<Widget> {
   static FormComposition _instance;
@@ -25,17 +23,17 @@ class FormComposition implements BaseComponent<Widget> {
 
   FormComposition buildInputsWithOneButton(
     String labelButton,
-    List<Map<String, String>> labelsToForm, {
+    List<Map<String, dynamic>> labelsToForm, {
+    Function validator,
     Function onPressed,
+    bool obscureText,
   }) {
     labelsToForm.forEach((label) {
-      _states.add(
-        SpaceInputSpace.build(
-          hintText: label['hintText'],
-          helperText: label['helperText'],
-          labelText: label['labelText'],
-        ),
-      );
+      _states.add(SpaceInputSpace.build(
+        label,
+        validator: validator,
+        obscureText: obscureText,
+      ));
     });
 
     _states.add(AppButton.build(

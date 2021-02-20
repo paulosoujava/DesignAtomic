@@ -1,12 +1,13 @@
-import 'package:atomic_design/design/atoms/app/atom_image/atom_image.dart';
-import 'package:atomic_design/design/atoms/builders/builder_text.dart';
-import 'package:atomic_design/design/helpers/mappers/login_mapper_string.dart';
-import 'package:atomic_design/design/organisms/compositions/forms/login_composition.dart';
-import 'package:atomic_design/design/pages/login_page.dart';
-import 'package:atomic_design/design/templates/forms/t_form.dart';
 import 'package:flutter/material.dart';
 
+import 'package:atomic_design/design/atoms/atoms.dart';
+import 'package:atomic_design/design/helpers/helpers.dart';
+import 'package:atomic_design/design/organisms/organisms.dart';
+import 'package:atomic_design/design/pages/pages.dart';
+import 'package:atomic_design/design/templates/templates.dart';
+
 class RegisterPage extends StatelessWidget {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,6 +19,7 @@ class RegisterPage extends StatelessWidget {
             child: SingleChildScrollView(
           child: Container(
             child: TForm.build(
+              _formKey,
               context: context,
               bottomRight: 40,
               bottomLeft: 400,
@@ -30,11 +32,15 @@ class RegisterPage extends StatelessWidget {
               containerLogin: FormComposition.instance().buildInputsWithOneButton(
                 LoginMapperString.labelButtonLogin(),
                 LoginMapperString.labelsToRegister(),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return LoginMapperString.requiredFields();
+                  }
+                },
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginPage()),
-                  );
+                  if (_formKey.currentState.validate()) {
+                    Navigator.of(context).pop();
+                  }
                 },
               ).build(),
             ),

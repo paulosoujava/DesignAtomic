@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:atomic_design/core/behaviors/behaviors_component.dart';
-import 'package:atomic_design/design/atoms/app/atom_icon/atom_icon.dart';
-import 'package:atomic_design/design/atoms/app/atom_text/atom_text.dart';
-import 'package:atomic_design/design/molecules/app/button/app_button.dart';
+import 'package:atomic_design/core/cores.dart';
+import 'package:atomic_design/design/atoms/atoms.dart';
+import 'package:atomic_design/design/molecules/molecules.dart';
 
 class BuilderButton implements BehaviorsComponent<BuilderButton, Widget> {
   static BuilderButton _instance;

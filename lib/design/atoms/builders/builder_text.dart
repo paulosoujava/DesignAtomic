@@ -1,6 +1,6 @@
-import 'package:atomic_design/core/displays/display_component.dart';
-import 'package:atomic_design/design/atoms/app/atom_text/atom_text.dart';
 import 'package:flutter/material.dart';
+
+import '../atoms.dart';
 
 class BuilderText implements DisplayComponent<BuilderText, Widget> {
   static BuilderText _instance;

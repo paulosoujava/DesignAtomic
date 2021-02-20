@@ -1,14 +1,21 @@
-import 'package:atomic_design/design/atoms/app/atom_input/atom_input.dart';
-import 'package:atomic_design/design/helpers/mixins/sizes/app_size.dart';
+import 'package:flutter/material.dart';
 
-import 'package:flutter/cupertino.dart';
+import 'package:atomic_design/design/atoms/atoms.dart';
+import 'package:atomic_design/design/helpers/helpers.dart';
 
 class SpaceInputSpace with AppSize {
-  static Widget build({String hintText, String helperText, String labelText}) {
+  static Widget build(Map<String, dynamic> mapper, {Function validator, bool obscureText}) {
     return Column(
       children: [
         AppSize.space10H(),
-        AtomInput.build(hintText: hintText, helperText: helperText, labelText: labelText),
+        AtomInput.build(
+          helperText: mapper['helperText'],
+          hintText: mapper['hintText'],
+          labelText: mapper['labelText'],
+          keyboardType: mapper['keyboardType'],
+          validator: validator,
+          obscureText: mapper['obscureText'],
+        ),
         AppSize.space10H(),
       ],
     );
