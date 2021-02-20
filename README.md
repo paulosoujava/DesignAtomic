@@ -4,10 +4,11 @@ Mas o que é o atomic design?
 É uma metodologia que foi desenvolvida por Brand Frost, que cobre tudo que é necessario para criar e manter sistemas de design eficazes.
 
 ```
-O Atomic Design detalha tudo o que é necessário para criar e manter sistemas de design robustos, permitindo que sua organização 
-implemente UIs de maior qualidade e consistentes com mais rapidez do que nunca. Este livro apresenta uma metodologia para pensar
- em nossas IUs como hierarquias ponderadas, discute as qualidades de guias de estilo eficazes e apresenta técnicas para transformar
-  o fluxo de trabalho de design e desenvolvimento de sua equipe.
+O Atomic Design detalha tudo o que é necessário para criar e manter sistemas de design robustos,
+permitindo que sua organização implemente UIs de maior qualidade e consistentes com mais rapidez
+do que nunca. Este livro apresenta uma metodologia para pensar em nossas IUs como hierarquias ponderadas,
+discute as qualidades de guias de estilo eficazes e apresenta técnicas para transformar
+o fluxo de trabalho de design e desenvolvimento de sua equipe.
 
 Fonte:
 https://bradfrost.com/
@@ -27,21 +28,25 @@ trazendo para o flutter os átomos são WIDGETS:
  EX: Text, Input, Image, Icon 
 
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/moleculas.png" width="648">
+
  Moléculas é a junção de dois ou mais átomos, ou seja, um grupo relativamente simples de elementos da interface que funcionam juntos como uma unidade.
  EX:  Button (button + text), lembra do que falei acima, não complique trazendo o botão para o átomo, até por que um botão SEMPRE terá um,
  icone, texto, algo deste tipo
 
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/organismo.png" width="648">
+
 Organismo aqui já entra um pouquinho, mas só um poquinho de complexidade, organismos são componentes de interface relativamente complexos compostos por grupos de moléculas
 e/ou  átomos e/ou outros organismos
 EX: Um conjunto de inputs -> para virar um formulário de login, registro, profile
 
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/template.png" width="648">
+
 Template como o nome diz, é um modelo de como exibir, neste projeto por exemplo eu criei um template para formulários, e chamos meus organismos
 de formulários para serem exibidos nele.
 
 
-<img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/template.png" width="648">
+<img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/page.png" width="648">
+
 chegamos as Páginas, onde os templates seram acionados e a mágica toda acontece.
 
 Fonte:
@@ -127,6 +132,7 @@ formulários, poderia ter um template para profiles etc... e por final as pages 
 obviametne a ordem dos TRATORES não altera o VIADUTO!!
 
 Exemplo dos Generics:
+
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/core.png" width="648">
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/fluxo%20generics.png" width="648">
 
