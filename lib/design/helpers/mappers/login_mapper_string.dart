@@ -1,6 +1,6 @@
 import 'package:atomic_design/design/helpers/mixins/strings/app_strings.dart';
 
-class LoginString with AppStrings {
+class LoginMapperString with AppStrings {
   static String labelButtonLogin() => AppStrings.login;
   static String labelButtonRegister() => AppStrings.register;
 

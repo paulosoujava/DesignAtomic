@@ -1,6 +1,6 @@
 import 'package:atomic_design/design/atoms/app/atom_image/atom_image.dart';
 import 'package:atomic_design/design/atoms/builders/builder_text.dart';
-import 'package:atomic_design/design/helpers/mappers/login_string.dart';
+import 'package:atomic_design/design/helpers/mappers/login_mapper_string.dart';
 import 'package:atomic_design/design/organisms/compositions/forms/login_composition.dart';
 import 'package:atomic_design/design/pages/login_page.dart';
 import 'package:atomic_design/design/templates/forms/t_form.dart';
@@ -24,12 +24,12 @@ class RegisterPage extends StatelessWidget {
               logo: AtomImage.build(path: 'assets/images/dog.png'),
               titleHeader: BuilderText.instance()
                   .h1(
-                    LoginString.labelButtonLogin(),
+                    LoginMapperString.labelButtonLogin(),
                   )
                   .build(),
               containerLogin: FormComposition.instance().buildInputsWithOneButton(
-                LoginString.labelButtonLogin(),
-                LoginString.labelsToRegister(),
+                LoginMapperString.labelButtonLogin(),
+                LoginMapperString.labelsToRegister(),
                 onPressed: () {
                   Navigator.push(
                     context,
