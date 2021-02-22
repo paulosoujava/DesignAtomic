@@ -6,7 +6,7 @@ class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
   final Behaviour behaviour;
   final Map<String, dynamic> mapper;
 
-  const StyleInput({this.behaviour, this.mapper});
+  const StyleInput({Key key, this.behaviour, this.mapper}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

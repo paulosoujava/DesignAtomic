@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:atomic_design/core/protocolo.dart';
 
-class StyleText extends StatelessWidget implements DisplayComponent<Widget> {
+class StyleText extends StatelessWidget with DisplayComponent<Widget> {
   final Display display;
   final String data;
 
@@ -19,30 +19,25 @@ class StyleText extends StatelessWidget implements DisplayComponent<Widget> {
 
   @override
   Widget h1(BuildContext context, Display display) {
-    return atomText(data: data);
-  }
-
-  @override
-  Widget render(BuildContext context, Display display) {
-    return atomText(data: data);
+    return atomText(data: data, fontSize: 30);
   }
 
   @override
   Widget subtitle(BuildContext context, Display display) {
-    return atomText(data: data);
+    return atomText(data: data, fontSize: 18);
   }
 
   @override
   Widget title(BuildContext context, Display display) {
-    return atomText(data: data);
+    return atomText(data: data, fontSize: 20);
   }
 
-  Widget atomText({String data}) {
+  Widget atomText({String data, double fontSize}) {
     return Text(
       data,
       textAlign: TextAlign.center,
       overflow: TextOverflow.ellipsis,
-      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
+      style: TextStyle(fontWeight: FontWeight.bold, fontSize: fontSize),
     );
   }
 }
