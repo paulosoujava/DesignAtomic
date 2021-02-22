@@ -13,4 +13,5 @@ mixin AppStrings {
 
   //validations
   static String get requiredFields => 'ops, campo obrigatório';
+  static String get password_not_equal => 'senhas não conferem';
 }

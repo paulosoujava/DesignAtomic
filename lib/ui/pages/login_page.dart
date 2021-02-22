@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:atomic_design/presenters/protocolo.dart';
 import 'package:atomic_design/ui/templates/protocolo.dart';
 
 class LoginPage extends StatefulWidget {
@@ -9,8 +8,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final _controller = LoginController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

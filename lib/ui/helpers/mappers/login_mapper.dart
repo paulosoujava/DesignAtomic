@@ -5,6 +5,7 @@ class LoginMapper with AppStrings {
   static String labelButtonLogin() => AppStrings.login;
   static String labelButtonRegister() => AppStrings.register;
   static String requiredFields() => AppStrings.requiredFields;
+  static String passwordNoteEqual() => AppStrings.password_not_equal;
 
   static Map<String, dynamic> _inputLogin() => {
         'hintText': AppStrings.hintLogin,

@@ -1,12 +1,10 @@
-import 'package:atomic_design/ui/organisms/frm_login.dart';
 import 'package:flutter/material.dart';
 
 import 'package:atomic_design/core/protocolo.dart';
 import 'package:atomic_design/ui/atoms/protocolo.dart';
+import 'package:atomic_design/ui/organisms/frm_login.dart';
 
 class TForm {
-  static final _formKey = GlobalKey<FormState>();
-
   static Widget build({
     BuildContext context,
     double bottomLeft = 50,
