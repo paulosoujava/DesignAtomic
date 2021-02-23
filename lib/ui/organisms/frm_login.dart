@@ -21,7 +21,7 @@ class FrmLogin {
             child: BuilderApp.instance()
                 .renderOne(
                   Factory.atom(
-                    StyleText(display: Display.TITLE, data: 'Register'),
+                    StyleText(display: constTitle, data: 'Register'),
                   ),
                 )
                 .buildOne(),
@@ -29,7 +29,7 @@ class FrmLogin {
           ...BuilderApp.instance()
               .renderList(
                 Factory.atom(StyleInput(
-                  behaviour: controller.errorLogin ? Behaviour.ERROR : Behaviour.REGULAR,
+                  behaviour: controller.errorLogin ? constError : constRegular,
                   mapper: LoginMapper.labelsToLogin(),
                   validator: controller.validateEmail,
                 )),
@@ -37,7 +37,7 @@ class FrmLogin {
               .renderList(
                 Factory.atom(
                   StyleInput(
-                    behaviour: controller.errorLogin ? Behaviour.ERROR : Behaviour.REGULAR,
+                    behaviour: controller.errorLogin ? constError : constRegular,
                     mapper: LoginMapper.labelsToPass(),
                     validator: controller.validatePassword,
                   ),
@@ -46,7 +46,7 @@ class FrmLogin {
               .renderList(
                 Factory.atom(
                   StyleInput(
-                    behaviour: controller.errorLogin ? Behaviour.ERROR : Behaviour.REGULAR,
+                    behaviour: controller.errorLogin ? constError : constRegular,
                     mapper: LoginMapper.labelsToRepPass(),
                     validator: controller.validateRepPassword,
                   ),
@@ -59,8 +59,8 @@ class FrmLogin {
               .renderList(
                 Factory.atom(
                   StyleButton(
-                    behaviour: Behaviour.REGULAR,
-                    atomText: StyleText(display: Display.TITLE, data: 'Register'),
+                    behaviour: constRegular,
+                    atomText: StyleText(display: constTitle, data: 'Register'),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         print('oi');
