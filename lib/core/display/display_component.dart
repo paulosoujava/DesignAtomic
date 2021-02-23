@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:atomic_design/core/protocolo.dart';
 
-class DisplayComponent<T> implements BaseDisplay<T> {
+class DisplayComponent<T extends Widget> implements BaseDisplay<T> {
   @override
   T h1(BuildContext context, Display display) {
     debugPrint('$this does not implements Display.h1');

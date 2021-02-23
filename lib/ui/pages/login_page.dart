@@ -1,35 +1,23 @@
+import 'package:atomic_design/main/factories/factories.dart';
+import 'package:atomic_design/ui/helpers/mixins/keyboard/keyboard_manager.dart';
+import 'package:atomic_design/ui/templates/protocolo.dart';
 import 'package:flutter/material.dart';
 
-import 'package:atomic_design/ui/templates/protocolo.dart';
+class LoginPage extends StatelessWidget with KeyboardManager {
+  const LoginPage({Key key}) : super(key: key);
 
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          title: Text('Login Page'),
+      body: GestureDetector(
+        onTap: () => hideKeyboard(context),
+        child: SingleChildScrollView(
+          child: TForm.build(
+            context: context,
+            widget: makeLoginPage(),
+          ),
         ),
-        body: GestureDetector(
-          onTap: () {
-            final currentFocus = FocusScope.of(context);
-            if (currentFocus.hasFocus) {
-              currentFocus.unfocus();
-            }
-          },
-          child: SafeArea(
-              child: SingleChildScrollView(
-            child: Container(
-              child: TForm.build(
-                context: context,
-              ),
-            ),
-          )),
-        ));
+      ),
+    );
   }
 }

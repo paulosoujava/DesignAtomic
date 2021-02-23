@@ -1,3 +1,5 @@
+import 'package:atomic_design/presentation/presenters/login/login_presenter.dart';
+import 'package:atomic_design/ui/helpers/errors/ui_error.dart';
 import 'package:flutter/material.dart';
 
 import 'package:atomic_design/ui/helpers/protocolo.dart';
@@ -6,12 +8,31 @@ import 'package:atomic_design/core/protocolo.dart';
 
 import 'package:atomic_design/ui/atoms/protocolo.dart';
 import 'package:atomic_design/ui/molecules/protocolo.dart';
-import 'package:atomic_design/presenters/protocolo.dart';
 
-class FrmLogin {
+class FrmLogin extends StatefulWidget {
+  final LoginPresenter presenter;
+
+  FrmLogin(this.presenter);
+
+  @override
+  _FrmLogin createState() => _FrmLogin();
+}
+
+class _FrmLogin extends State<FrmLogin> {
   static final _formKey = GlobalKey<FormState>();
-  static final controller = LoginController();
-  static Widget organismLogin() {
+
+  @override
+  Widget build(BuildContext context) {
+    return _organismLogin();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    widget.presenter.dispose();
+  }
+
+  Widget _organismLogin() {
     return Form(
       key: _formKey,
       child: Column(
@@ -26,33 +47,42 @@ class FrmLogin {
                 )
                 .buildOne(),
           ),
-          ...BuilderApp.instance()
-              .renderList(
-                Factory.atom(StyleInput(
-                  behaviour: controller.errorLogin ? constError : constRegular,
-                  mapper: LoginMapper.labelsToLogin(),
-                  validator: controller.validateEmail,
-                )),
-              )
-              .renderList(
-                Factory.atom(
-                  StyleInput(
-                    behaviour: controller.errorLogin ? constError : constRegular,
-                    mapper: LoginMapper.labelsToPass(),
-                    validator: controller.validatePassword,
-                  ),
-                ),
-              )
-              .renderList(
-                Factory.atom(
-                  StyleInput(
-                    behaviour: controller.errorLogin ? constError : constRegular,
-                    mapper: LoginMapper.labelsToRepPass(),
-                    validator: controller.validateRepPassword,
-                  ),
-                ),
-              )
-              .buildList(),
+          StreamBuilder<UIError>(
+              stream: widget.presenter.emailErrorStream,
+              builder: (context, snapshot) {
+                UIError state = snapshot.data ?? snapshot.data;
+                return BuilderApp.instance()
+                    .renderOne(
+                      Factory.atom(StyleInput(
+                        behaviour: state == null ? constRegular : constError,
+                        mapper: LoginMapper.labelsToLogin(),
+                        onChanged: widget.presenter.validateEmail,
+                        validator: widget.presenter.validateEmail,
+                        errorText: state.description,
+                      )),
+                    )
+                    .buildOne();
+              }),
+          AppSize.space10H(),
+          AppSize.space10H(),
+          StreamBuilder<UIError>(
+              stream: widget.presenter.passwordErrorStream,
+              builder: (context, snapshot) {
+                UIError state = snapshot.data ?? snapshot.data;
+                return BuilderApp.instance()
+                    .renderOne(
+                      Factory.atom(
+                        StyleInput(
+                          behaviour: state == null ? constRegular : constError,
+                          mapper: LoginMapper.labelsToPass(),
+                          validator: widget.presenter.validatePassword,
+                          onChanged: widget.presenter.validatePassword,
+                          errorText: state.description,
+                        ),
+                      ),
+                    )
+                    .buildOne();
+              }),
           AppSize.space10H(),
           AppSize.space10H(),
           ...BuilderApp.instance()

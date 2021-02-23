@@ -15,14 +15,14 @@ class StyleImage extends StatelessWidget with BehaviourComponent<Widget> {
   @override
   Widget whenError(BuildContext context, Behaviour behaviour) {
     return atomImage(
-      path: 'assets/images/logo.png',
+      path: 'logo'.png,
     );
   }
 
   @override
   Widget whenRegular(BuildContext context, Behaviour behaviour) {
     return atomImage(
-      path: 'assets/images/dog.png',
+      path: 'dog'.png,
     );
   }
 }

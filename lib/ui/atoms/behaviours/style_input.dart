@@ -6,13 +6,17 @@ class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
   final Behaviour behaviour;
   final Map<String, dynamic> mapper;
   final Function validator;
+  final Function onChanged;
   final Widget icon;
+  final String errorText;
 
   const StyleInput({
     this.behaviour,
     this.mapper,
     this.validator,
     this.icon,
+    this.onChanged,
+    this.errorText,
   });
 
   @override
@@ -24,7 +28,9 @@ class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
   Widget whenError(BuildContext context, Behaviour behaviour) {
     return atomInput(
         mapper: mapper,
+        errorText: errorText,
         validator: validator,
+        onChanged: onChanged,
         icon: Icon(
           Icons.error,
           color: Colors.red,
@@ -34,12 +40,17 @@ class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
 
   @override
   Widget whenRegular(BuildContext context, Behaviour behaviour) {
-    return atomInput(mapper: mapper, validator: validator);
+    return atomInput(
+      mapper: mapper,
+      validator: validator,
+      onChanged: onChanged,
+    );
   }
 }
 
 //ATOM
 Widget atomInput({
+  errorText,
   mapper,
   validator,
   onChanged,
@@ -58,6 +69,11 @@ Widget atomInput({
         helperText: mapper['helperText'],
         hintText: mapper['hintText'],
         labelText: mapper['labelText'],
+        errorText: errorText,
+        errorStyle: TextStyle(
+          fontWeight: FontWeight.w300,
+          color: Colors.red,
+        ),
         hintStyle: TextStyle(
           fontWeight: FontWeight.w300,
           color: Colors.blue,

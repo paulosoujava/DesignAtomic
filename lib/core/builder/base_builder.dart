@@ -1,4 +1,6 @@
-abstract class BaseBuilder<W> {
+import 'package:flutter/material.dart';
+
+abstract class BaseBuilder<W extends Widget> {
   List<W> states = [];
   W oneWidget;
   renderList(T);

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:atomic_design/core/protocolo.dart';
 
-abstract class Base<T> {
+abstract class Base<T extends Widget> {
   T whenRegular(BuildContext context, Behaviour childBehaviour) {
     debugPrint('$this does not implements Behaviour.regular');
     return whenRegular(context, childBehaviour);
