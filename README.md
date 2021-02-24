@@ -52,6 +52,26 @@ chegamos as Páginas, onde os templates seram acionados e a mágica toda acontec
 Fonte:
 https://vidadeproduto.com.br/atomic-design/#1_Atomos
 
+
+# Fluxo by Paulo 
+<img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/fluxo.png" width="648">
+
+## Fluxo Atomico
+Um atom só pode conter ele mesmo e seus estados, exemplo um atom de texto pode ter seus estados tais como TITELE, SUBTITLE, H1 H2, (tamanhos de fontes, tipografia etc..)
+
+Uma Molécula pode conter atomos, e ela mesmo, sim moléculas, você pode aplicar estados também na molécula, expemplo, um botão [Disabilitado, habilitado suas cores, mais
+o atom de texto [H1] por exemplo]
+
+Um organismo pode ter um atom, molécula e ele mesmo, !! CUIDADO !! você pode estar criando complexidade desnecessária, vai depender de sua equipe, para colocar ou não 
+estados aqui, exemplo, LOADING
+
+Um Template pode conter Atom, Molécula e Organismo, !! NÃO COLOQUE TEMPLATE DENTRO DE TEMPLATE !!
+PAGE usam os TEMPLATES E SOMENTE OS TEMPLATES
+
+<img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/fluxo_atomic.png" width="648">
+
+
+
 # Clean Code
 
 <img src="https://raw.githubusercontent.com/paulosoujava/DesignAtomic/main/images/clean.png" width="648">

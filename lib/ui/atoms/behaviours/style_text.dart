@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../../../domain/core/index.dart';
+import '../../../domain/index.dart';
 
 import '../../../helpers/index.dart';
 

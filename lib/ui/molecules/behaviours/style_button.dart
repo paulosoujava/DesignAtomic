@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/core/index.dart';
+import '../../../domain/index.dart';
 
 import '../../atoms/index.dart';
 
