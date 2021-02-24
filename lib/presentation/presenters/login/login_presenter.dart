@@ -1,3 +1,5 @@
+import '../../../helpers/index.dart';
+
 abstract class LoginPresenter {
   Stream<String> get emailErrorStream;
   Stream<String> get passwordErrorStream;
@@ -7,6 +9,10 @@ abstract class LoginPresenter {
 
   String validateEmail(String email);
   String validatePassword(String password);
+
+  Behaviour get emailBehaviour;
+  Behaviour get passwordBehaviour;
+  Behaviour get buttonBehaviour;
 
   Future<void> auth();
   void dispose();

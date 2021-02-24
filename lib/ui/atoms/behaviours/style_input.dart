@@ -11,6 +11,7 @@ class StyleInput extends StatelessWidget with BehaviourStates<Widget> {
   final Function onChanged;
   final Widget icon;
   final String errorText;
+  final enabled;
 
   const StyleInput({
     this.behaviour,
@@ -19,6 +20,7 @@ class StyleInput extends StatelessWidget with BehaviourStates<Widget> {
     this.icon,
     this.onChanged,
     this.errorText,
+    this.enabled,
   });
 
   @override
@@ -33,6 +35,7 @@ class StyleInput extends StatelessWidget with BehaviourStates<Widget> {
         errorText: errorText,
         validator: validator,
         onChanged: onChanged,
+        enabled: true,
         icon: Icon(
           Icons.error,
           color: Colors.red,
@@ -46,6 +49,17 @@ class StyleInput extends StatelessWidget with BehaviourStates<Widget> {
       mapper: mapper,
       validator: validator,
       onChanged: onChanged,
+      enabled: true,
+    );
+  }
+
+  @override
+  Widget whenDisabled(BuildContext context, Behaviour behaviour) {
+    return _atomInput(
+      mapper: mapper,
+      validator: null,
+      onChanged: null,
+      enabled: false,
     );
   }
 }
@@ -57,8 +71,10 @@ Widget _atomInput({
   validator,
   onChanged,
   icon,
+  enabled,
 }) {
   return TextFormField(
+    enabled: enabled,
     keyboardType: mapper['keyboardType'],
     validator: validator,
     onChanged: onChanged,
@@ -68,7 +84,6 @@ Widget _atomInput({
     cursorWidth: 1.0,
     decoration: InputDecoration(
         icon: icon,
-        helperText: mapper['helperText'],
         hintText: mapper['hintText'],
         labelText: mapper['labelText'],
         errorText: errorText,

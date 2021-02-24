@@ -51,11 +51,12 @@ class _FrmLogin extends State<FrmLogin> with StateDisplay, StateBehaviour {
           StreamBuilder<String>(
               stream: widget.presenter.emailErrorStream,
               builder: (context, snapshot) {
-                String state = snapshot.data ?? snapshot.data;
+                String state = snapshot.data?.isEmpty == true ? null : snapshot.data;
+                print(state);
                 return BuilderApp.instance()
                     .renderOne(
                       StyleInput(
-                        behaviour: state == null ? regularBehaviour : errorBehaviour,
+                        behaviour: widget.presenter.emailBehaviour,
                         mapper: LoginMapper.labelsToLogin(),
                         onChanged: widget.presenter.validateEmail,
                         validator: widget.presenter.validateEmail,
@@ -66,35 +67,40 @@ class _FrmLogin extends State<FrmLogin> with StateDisplay, StateBehaviour {
               }),
           AppSize.space10H(),
           AppSize.space10H(),
-          StreamBuilder<String>(builder: (context, snapshot) {
-            String state = snapshot.data ?? snapshot.data;
-            return BuilderApp.instance()
-                .renderOne(
-                  StyleInput(
-                    behaviour: state == null ? regularBehaviour : errorBehaviour,
-                    mapper: LoginMapper.labelsToPass(),
-                    validator: widget.presenter.validatePassword,
-                    onChanged: widget.presenter.validatePassword,
-                    errorText: state,
-                  ),
-                )
-                .buildOne();
-          }),
+          StreamBuilder<String>(
+              stream: widget.presenter.passwordErrorStream,
+              builder: (context, snapshot) {
+                String state = snapshot.data ?? snapshot.data;
+                return BuilderApp.instance()
+                    .renderOne(
+                      StyleInput(
+                        behaviour: widget.presenter.passwordBehaviour,
+                        mapper: LoginMapper.labelsToPass(),
+                        validator: widget.presenter.validatePassword,
+                        errorText: state,
+                      ),
+                    )
+                    .buildOne();
+              }),
           AppSize.space10H(),
           AppSize.space10H(),
-          ...BuilderApp.instance()
-              .renderList(
-                StyleButton(
-                  behaviour: regularBehaviour,
-                  atomText: StyleText(display: titleDisplay, data: 'Register'),
-                  onPressed: () {
-                    if (_formKey.currentState.validate()) {
-                      print('oi');
-                    }
-                  },
-                ),
-              )
-              .buildList(),
+          StreamBuilder<bool>(
+              stream: widget.presenter.isLoadingStream,
+              builder: (context, snapshot) {
+                return BuilderApp.instance()
+                    .renderOne(
+                      StyleButton(
+                        behaviour: widget.presenter.buttonBehaviour,
+                        onPressed: () {
+                          if (_formKey.currentState.validate()) {
+                            widget.presenter.auth();
+                            print('oi');
+                          }
+                        },
+                      ),
+                    )
+                    .buildOne();
+              })
         ],
       ),
     );

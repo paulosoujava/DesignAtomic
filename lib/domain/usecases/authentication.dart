@@ -8,21 +8,19 @@ abstract class Authentication {
 
 class AuthenticationParams extends Comparable<AuthenticationParams> {
   final String email;
-  final String secret;
+  final String password;
 
-  List get props => [email, secret];
-
-  AuthenticationParams({@required this.email, @required this.secret});
+  AuthenticationParams({@required this.email, @required this.password});
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
 
-    return o is AuthenticationParams && o.email == email && o.secret == secret;
+    return o is AuthenticationParams && o.email == email && o.password == password;
   }
 
   @override
-  int get hashCode => email.hashCode ^ secret.hashCode;
+  int get hashCode => email.hashCode ^ password.hashCode;
 
   @override
   int compareTo(AuthenticationParams other) {

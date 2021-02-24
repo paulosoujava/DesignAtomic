@@ -10,21 +10,18 @@ class LoginMapper with AppStrings {
 
   static Map<String, dynamic> _inputLogin() => {
         'hintText': AppStrings.hintLogin,
-        'helperText': AppStrings.helpLogin,
         'labelText': AppStrings.login,
         'keyboardType': TextInputType.streetAddress,
         'obscureText': false,
       };
   static Map<String, dynamic> _inputPassword() => {
         'hintText': AppStrings.hintPassword,
-        'helperText': AppStrings.helpPassword,
         'labelText': AppStrings.password,
         'keyboardType': TextInputType.number,
         'obscureText': true,
       };
   static Map<String, dynamic> _inutRepPassword() => {
         'hintText': AppStrings.hintRepPassword,
-        'helperText': AppStrings.helpPassword,
         'labelText': AppStrings.repPassword,
         'keyboardType': TextInputType.number,
         'obscureText': true,
