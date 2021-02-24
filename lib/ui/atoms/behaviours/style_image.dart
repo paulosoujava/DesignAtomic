@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:atomic_design/core/protocolo.dart';
+import '../../../domain/core/index.dart';
 
-class StyleImage extends StatelessWidget with BehaviourComponent<Widget> {
+import '../../../helpers/index.dart';
+
+class StyleImage extends StatelessWidget with BehaviourStates<Widget> {
   final Behaviour behaviour;
 
   const StyleImage({this.behaviour});
@@ -14,20 +16,20 @@ class StyleImage extends StatelessWidget with BehaviourComponent<Widget> {
 
   @override
   Widget whenError(BuildContext context, Behaviour behaviour) {
-    return atomImage(
+    return _atomImage(
       path: 'logo'.png,
     );
   }
 
   @override
   Widget whenRegular(BuildContext context, Behaviour behaviour) {
-    return atomImage(
+    return _atomImage(
       path: 'dog'.png,
     );
   }
 }
 
 //ATOM
-Widget atomImage({path}) {
+Widget _atomImage({path}) {
   return Image(image: AssetImage(path));
 }

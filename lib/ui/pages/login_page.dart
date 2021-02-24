@@ -1,9 +1,17 @@
-import 'package:atomic_design/main/factories/factories.dart';
-import 'package:atomic_design/ui/helpers/mixins/keyboard/keyboard_manager.dart';
-import 'package:atomic_design/ui/templates/protocolo.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget with KeyboardManager {
+import '../../domain/core/index.dart';
+
+import '../../main/factories/index.dart';
+
+import '../atoms/index.dart';
+
+import '../templates/index..dart';
+
+import '../../helpers/index.dart';
+import '../helpers/index.dart';
+
+class LoginPage extends StatelessWidget with KeyboardManager, StateBehaviour {
   const LoginPage({Key key}) : super(key: key);
 
   @override
@@ -14,6 +22,11 @@ class LoginPage extends StatelessWidget with KeyboardManager {
         child: SingleChildScrollView(
           child: TForm.build(
             context: context,
+            header: BuilderApp.instance()
+                .renderOne(
+                  StyleImage(behaviour: errorBehaviour),
+                )
+                .buildOne(),
             widget: makeLoginPage(),
           ),
         ),

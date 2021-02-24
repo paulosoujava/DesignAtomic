@@ -1,9 +1,12 @@
-import 'package:atomic_design/ui/atoms/protocolo.dart';
 import 'package:flutter/material.dart';
 
-import 'package:atomic_design/core/behaviour/protocolo.dart';
+import '../../../domain/core/index.dart';
 
-class StyleButton extends StatelessWidget with BehaviourComponent<Widget> {
+import '../../atoms/index.dart';
+
+import '../../../helpers/index.dart';
+
+class StyleButton extends StatelessWidget with BehaviourStates<Widget> {
   final Behaviour behaviour;
   final Function onPressed;
   final StyleText atomText;

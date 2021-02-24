@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:atomic_design/core/protocolo.dart';
+import '../../../domain/core/index.dart';
 
-class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
+import '../../../helpers/index.dart';
+
+class StyleInput extends StatelessWidget with BehaviourStates<Widget> {
   final Behaviour behaviour;
   final Map<String, dynamic> mapper;
   final Function validator;
@@ -26,7 +28,7 @@ class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
 
   @override
   Widget whenError(BuildContext context, Behaviour behaviour) {
-    return atomInput(
+    return _atomInput(
         mapper: mapper,
         errorText: errorText,
         validator: validator,
@@ -40,7 +42,7 @@ class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
 
   @override
   Widget whenRegular(BuildContext context, Behaviour behaviour) {
-    return atomInput(
+    return _atomInput(
       mapper: mapper,
       validator: validator,
       onChanged: onChanged,
@@ -49,7 +51,7 @@ class StyleInput extends StatelessWidget with BehaviourComponent<Widget> {
 }
 
 //ATOM
-Widget atomInput({
+Widget _atomInput({
   errorText,
   mapper,
   validator,

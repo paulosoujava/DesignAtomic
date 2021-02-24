@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 
-import 'package:atomic_design/core/protocolo.dart';
+import '../../../domain/core/index.dart';
 
-class StyleText extends StatelessWidget with DisplayComponent<Widget> {
+import '../../../helpers/index.dart';
+
+class StyleText extends StatelessWidget with DisplayStates<Widget> {
   final Display display;
   final String data;
 
